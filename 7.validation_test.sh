@@ -137,7 +137,7 @@ cray uas delete --uai-list $UAINAME --format toml
 
 echo " Test UAI gateway health"
 /usr/share/doc/csm/scripts/operations/gateway-test/uai-gateway-test.sh >uai_gateway_test.logs
-RESULT5=$(grep " Successfully deleted" uai_gateway_test.logs)
+RESULT5=$(grep "Successfully deleted" uai_gateway_test.logs)
 if grep -q "Successfully deleted" <<< "$RESULT5"; then
 echo "uai gateway test completed sucessfully"
 else
