@@ -31,7 +31,7 @@ echo "Set node BMCs to DHCP"
 
 echo "Get the inventory of BMCs."
 
-readarray BMCS < <(grep mgmt /etc/hosts | awk '{print $NF}' | grep -v m001 | sort -u)
+#readarray BMCS < <(grep mgmt /etc/hosts | awk '{print $NF}' | grep -v m001 | sort -u)
 
 echo "Set the BMCs to DHCP."
 function bmcs_set_dhcp {
