@@ -1,8 +1,6 @@
 #!/bin/sh
 
-read -p "login to ncn-m002 then run the script, press 'y' if you are inside m002 else presss 'n' to exit: "  press
-if [[ $press == 'y' ]]
-then
+
 
 export SW_ADMIN_PASSWORD=!nitial0
 echo " Install latest docs on ncn-m001"
@@ -38,7 +36,9 @@ fi
 
 echo "Running all the validation on ncn-m002 "
 #echo "login to ncn-m002"
-
+read -p "login to ncn-m002 then run the script, press 'y' if you are inside m002 else presss 'n' to exit: "  press
+if [[ $press == 'y' ]]
+then
 echo " Install latest docs on ncn-m002"
 rpm -Uvh --force https://artifactory.algol60.net/artifactory/csm-rpms/hpe/stable/sle-15sp2/docs-csm/1.3/noarch/docs-csm-latest.noarch.rpm
 echo "Running all the validation on ncn-m002"
@@ -137,7 +137,7 @@ cray uas delete --uai-list $UAINAME --format toml
 
 echo " Test UAI gateway health"
 /usr/share/doc/csm/scripts/operations/gateway-test/uai-gateway-test.sh >uai_gateway_test.logs
-RESULT5=$(grep "Successfully deleted" uai_gateway_test.logs)
+RESULT5=$(grep " Successfully deleted" uai_gateway_test.logs)
 if grep -q "Successfully deleted" <<< "$RESULT5"; then
 echo "uai gateway test completed sucessfully"
 else
